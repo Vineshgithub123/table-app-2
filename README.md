@@ -45,6 +45,9 @@ RxJS is used for state management within the application. It allows us to handle
 
 The `StorageService` class is used to handle data storage dynamically within the application. It abstracts the use of `localStorage` and `sessionStorage`, allowing you to switch between them based on the persistence needs.
 
+## CSS Utility
+This Application used Bootstrap specifications and styles.
+
 ### Colors
 
 These colors are defined in the `src/assets/scss/_variables.scss` file.
