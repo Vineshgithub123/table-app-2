@@ -1,0 +1,7 @@
+@if(auth.isAuthenticated() | async) {
+<div class="logout">
+  <button class="logout-btn" role="button" (click)="logout()">Log Out</button>
+</div>
+}
+
+<router-outlet></router-outlet>

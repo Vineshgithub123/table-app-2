@@ -1,0 +1,30 @@
+@if(totalPages > 1) {
+<nav class="pagination-nav">
+  <ul class="pagination">
+    <li class="page-item" [class.disabled]="currentPage === 1">
+      <a
+        class="page-link"
+        (click)="changePage(currentPage - 1)"
+        aria-label="Previous"
+      >
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    @for(page of getPageRange(); track page) {
+      <li class="page-item" [class.active]="page === currentPage">
+        <a class="page-link" (click)="changePage(page)">{{ page }}</a>
+      </li>
+    }
+    <li class="page-item" [class.disabled]="currentPage === totalPages">
+      <a
+        class="page-link"
+        (click)="changePage(currentPage + 1)"
+        aria-label="Next"
+      >
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+}

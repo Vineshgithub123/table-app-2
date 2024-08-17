@@ -1,0 +1,30 @@
+
+@import "../../../assets/scss/main.scss";
+
+.login-wrap {
+    width: 100%;
+    height: 100vh;
+    @include d-flex(center,center);
+    .login-btn {
+        display: inline-block;
+        box-sizing: border-box;
+        text-align: center;
+        position: relative;
+        cursor: pointer;
+        border-radius: 8px;
+        line-height: 29px;
+        padding: 0 10px 0 11px;
+        border: 1px solid $login-border;
+        background-color: $light;
+        box-shadow: $login-btn-shadow;
+        color: $dark-02;
+        font-family: $font-family-sans;
+        font-size: $font-size-13;
+        &:focus {
+            border-color: $login-btn-focus;
+            outline: 0;
+        }
+    }
+
+
+}

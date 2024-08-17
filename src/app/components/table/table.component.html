@@ -1,0 +1,73 @@
+@if(!isLoader) {
+<div class="wrapper">
+  <div class="search-table">
+    <span>
+      <input
+        type="text"
+        placeholder="Search by Name or Language"
+        (keyup)="search($event)"
+      />
+      <img
+        src="../../../assets/images/icons/search.svg"
+        width="20px"
+        alt="Search Icon"
+      />
+    </span>
+  </div>
+  @if(haveData) {
+  <div class="table-wrap table-responsive py-5 container">
+    <table class="table table-hover table-striped">
+      <thead class="thead-dark">
+        <tr>
+          @for(header of headers; track header;) {
+          <th scope="col">{{ header | pascalCase }}</th>
+          }
+          <th>View</th>
+        </tr>
+      </thead>
+      <tbody class="table-hover custom-body">
+        @for(item of paginatedData; track item;) {
+        <tr appHighlightOnHover>
+          @for(header of headers; track header;) {
+          <td>
+            @if(isEditing[item.id] && header === 'bio') {
+            <textarea
+              #bioTextarea
+              type="text"
+              [value]="item[header]"
+              (blur)="saveChanges(item, header, $event)"
+              (keydown.enter)="saveChanges(item, header, $event)"
+              (keydown.escape)="cancelEdit(item)"
+              style="min-height: 100px"
+              class="form-control"
+            ></textarea>
+            } @else {
+            <span (click)="editCell(item, header)">{{ item[header] }}</span>
+            }
+          </td>
+          }
+          <td (click)="navigateToDetails(item.id)">>>></td>
+        </tr>
+        }
+      </tbody>
+    </table>
+    <app-pagination
+      [totalItems]="totalData.length"
+      [itemsPerPage]="itemsPerPage"
+      [currentPage]="currentPage"
+      (pageChange)="changePage($event)"
+    ></app-pagination>
+  </div>
+  } @else {
+  <div class="no-data d-flex justify-content-center vh-100 align-items-center">
+    <h2>No Data Found</h2>
+  </div>
+  }
+</div>
+} @else {
+<div class="spinner-wrap align-items-center d-flex justify-content-center">
+  <div class="spinner-border" style="width: 3rem; height: 3rem" role="status">
+    <span class="sr-only"></span>
+  </div>
+</div>
+}
